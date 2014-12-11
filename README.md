@@ -3,22 +3,41 @@ fuzzywuzzy-java
 
 Java implementation of famous fuzzy wuzzy algorithm -- http://seatgeek.com/blog/dev/fuzzywuzzy-fuzzy-string-matching-in-python
 
-Dependent Libararies:
+## Dependencies
 
-Google guava - For intersection and union operations on collections
-Apache commons-lang - To Levenstein Distance implementation
+* Google Guava - For intersection and union operations on collections
+* Apache commons-lang - Levenstein Distance implementation
 
-funnywuzzy java implementation calculates the match score of input strings s1, s2
+## Build & Run
 
-Results (Compared Strings (S1, S2) and % Matches found)
+```
+javac -cp guava-14.0.1.jar:commons-lang3-3.1.jar FuzzyMatch.java
+java -cp .:guava-14.0.1.jar:commons-lang3-3.1.jar FuzzyMatch
+```
 
-"CSK vs RCB", "RCB vs CSK"   -----------> 100% match
+## Results
 
-"web services as a software", "software as a services" -----------> 100% match
+You should see something like:
 
-"software-as-a-service", "software as a service" -----------> 100% match
+```
+100
+100
+100
+100
+62
+```
 
-"Microsoft's deal with skype", "Microsoft skype deal" -----------> 100% match
+Which means:
 
-"apple is good", "Google is best apple is" -----------> 62% match
+```
+"CSK vs RCB", "RCB vs CSK" --> 100% match
+
+"web services as a software" vs "software as a services" --> 100% match
+
+"software-as-a-service" vs "software as a service" --> 100% match
+
+"Microsoft's deal with skype" vs "Microsoft skype deal" --> 100% match
+
+"apple is good" vs "Google is best apple is" --> 62% match
+```
 
