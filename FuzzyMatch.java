@@ -1,5 +1,3 @@
-import java.text.CharacterIterator;
-import java.text.StringCharacterIterator;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.StringTokenizer;
@@ -9,6 +7,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
+
+import java.util.regex.Pattern;
 
 public class FuzzyMatch {
 
@@ -131,41 +131,8 @@ public class FuzzyMatch {
 	}
 	
 	public static String escapeString(String token) {
-
-		StringBuffer s = new StringBuffer(token.length());
-
-		CharacterIterator it = new StringCharacterIterator(token);
-		for (char ch = it.first(); ch != CharacterIterator.DONE; ch = it.next()) {
-			switch (ch) {
-			// '-,)(!`\":/][?;~><
-			case '\'':
-			case '/':
-			case '\\':
-			case '-':
-			case ',':
-			case ')':
-			case '(':
-			case '!':
-			case '`':
-			case '\"':
-			case ':':
-			case ']':
-			case '[':
-			case '?':
-			case ';':
-			case '~':
-			case '<':
-			case '>':
-				s.append(" ");
-				break;
-			default:
-				s.append(ch);
-				break;
-			}
-		}
-
-		token = s.toString();
-		return token;
+    final Pattern p = Pattern.compile("[^\\w+]", Pattern.UNICODE_CHARACTER_CLASS);
+    return p.matcher(token).replaceAll(" ");
 	}
 
 	public static void main(String[] args) {        
