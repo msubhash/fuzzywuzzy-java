@@ -22,3 +22,5 @@ Results (Compared Strings (S1, S2) and % Matches found)
 
 "apple is good", "Google is best apple is" -----------> 62% match
 
+===========================================================================
+LICENSE - MIT
